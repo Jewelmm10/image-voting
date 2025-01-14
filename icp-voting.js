@@ -1,8 +1,8 @@
 jQuery(document).ready(function ($) {
-    $('.icp-vote-button').on('click', function () {
+    $('.voting').on('click', function () {
         const button = $(this);
         const postId = button.data('post-id');
-        const card = button.closest('.icp-card'); // Find the current card
+        const card = button.closest('.voting-item'); // Find the current card
 
         $.ajax({
             url: icp_ajax.ajax_url,
@@ -15,10 +15,10 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     // Update votes for the current card
-                    card.find('.icp-vote-count').text(response.data.votes);
+                    card.find('.vote-count').text(response.data.votes);
 
                     // Update total votes for all cards
-                    $('.icp-total-votes').text(response.data.total_votes);
+                    $('.total-votes').text(response.data.total_votes);
                 } else {
                     alert(response.data.message || 'Something went wrong!');
                 }
