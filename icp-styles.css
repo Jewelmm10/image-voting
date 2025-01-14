@@ -1,36 +1,60 @@
-.icp-voting-cards {
+/* voting */
+
+.voting-inner{
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  
+  .voting-item{
+    margin-bottom: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.icp-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 0.375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding: 0.5rem;
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  
+  .name{
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    --tw-text-opacity: 1;
+    color: rgb(100 180 150 / var(--tw-text-opacity));
+  }
+  
+  .vote-result{
+    padding: 1rem;
     text-align: center;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.icp-image img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-.icp-content {
-    margin-top: 10px;
-}
-
-.icp-vote-button {
-    background-color: #0073aa;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 3px;
+  }
+  
+  .btn-primary{
     cursor: pointer;
-}
-
-.icp-vote-button:hover {
-    background-color: #005177;
-}
+    border-radius: 0.375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(100 180 150 / var(--tw-bg-opacity));
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  
+  .btn-primary:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+  }
+  
+  /* end */
