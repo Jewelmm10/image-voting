@@ -17,7 +17,7 @@ function icp_register_post_type() {
     $args = [
         'labels'        => $labels,
         'public'        => true,
-        'supports'      => ['title', 'thumbnail'], // Enable featured image
+        'supports'      => ['title', 'thumbnail'],
         'has_archive'   => true,
         'menu_position' => 5,
         'menu_icon'     => 'dashicons-format-image',
@@ -56,32 +56,32 @@ function icp_display_voting_cards($atts) {
         }
         wp_reset_postdata();
 
-        echo '<div class="icp-voting-cards">';
+        echo '<div class="voting-inner">';
         while ($query->have_posts()) {
-            $query->the_post();
+            $query->the_post(); 
             $post_id = get_the_ID();
             $vote_count = get_post_meta($post_id, '_icp_votes', true) ?: 0;
-            ?>
-            <div class="icp-card" data-post-id="<?php echo $post_id; ?>">
-                <div class="icp-image">
-                    <?php 
+            ?>            
+            <div class="voting-item" data-post-id="<?php echo $post_id; ?>">
+                <div class="big-cover">
+                <?php 
                     if (has_post_thumbnail()) {
                         the_post_thumbnail('medium'); // Display featured image
                     } else {
-                        echo '<img src="' . plugin_dir_url(__FILE__) . 'default-image.jpg" alt="Default Image">'; // Default image
+                        echo '<img src="https://placehold.co/400x500">';
                     }
-                    ?>
-                </div>
-                <div class="icp-content">
-                    <h3><?php the_title(); ?></h3>
-                    <button class="icp-vote-button" data-post-id="<?php echo $post_id; ?>">Vote</button>
-                    <p>This Image Votes: <span class="icp-vote-count"><?php echo $vote_count; ?></span></p>
-                    <p>All Votes: <span class="icp-total-votes"><?php echo $total_votes; ?></span></p>
+                ?>
+                </div>                    
+                <h3 class="name text-xl my-3 text-primary"><?php the_title(); ?></h3>
+                <button class="btn-primary voting" data-post-id="<?php echo $post_id; ?>">Vote</button>                    
+                <div class="vote-result p-4 text-center">
+                    <span class="vote-count"><?php echo $vote_count; ?></span>/<span class="total-votes"><?php echo $total_votes; ?></span>
                 </div>
             </div>
             <?php
         }
         echo '</div>';
+
         wp_reset_postdata();
     } else {
         echo '<p>No image contests found.</p>';
@@ -90,7 +90,7 @@ function icp_display_voting_cards($atts) {
 }
 add_shortcode('icp_voting', 'icp_display_voting_cards');
 
-// AJAX: Handle Voting
+// Handle Voting
 function icp_handle_vote() {
     check_ajax_referer('icp_nonce', 'nonce');
 
